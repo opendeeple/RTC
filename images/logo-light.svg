@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="120" viewBox="0 0 600 120" role="img" aria-label="RTC: Reversible Token Compression">
+  <title>RTC: Reversible Token Compression</title>
+  <g>
+    <rect x="16" y="42" width="36" height="36" rx="7" fill="#cfcdc6"/>
+    <rect x="60" y="42" width="36" height="36" rx="7" fill="#cfcdc6"/>
+    <rect x="104" y="42" width="36" height="36" rx="7" fill="#cfcdc6"/>
+    <path d="M156 60 H186 M176 50 L188 60 L176 70" fill="none" stroke="#898781" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="200" y="42" width="84" height="36" rx="9" fill="#2a78d6"/>
+    <circle cx="226" cy="60" r="4" fill="#ffffff" fill-opacity="0.85"/>
+    <circle cx="242" cy="60" r="4" fill="#ffffff" fill-opacity="0.85"/>
+    <circle cx="258" cy="60" r="4" fill="#ffffff" fill-opacity="0.85"/>
+  </g>
+  <text x="312" y="73" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="2" fill="#0b0b0b">RTC</text>
+  <text x="314" y="98" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" letter-spacing="0.5" fill="#52514e">Reversible Token Compression</text>
+</svg>

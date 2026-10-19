@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="470" viewBox="0 0 920 470" role="img" aria-label="RTC architecture: the tokens of each unit of meaning are composed into one meaning vector Q, a causal Transformer runs over meanings, a decoder emits the next unit's tokens and a reconstruction head rebuilds each unit from its own Q">
+<title>RTC architecture: the tokens of each unit of meaning are composed into one meaning vector Q, a causal Transformer runs over meanings, a decoder emits the next unit's tokens and a reconstruction head rebuilds each unit from its own Q</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#898781" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="920" height="470" fill="#ffffff"/>
+<text x="18" y="62" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="start" xml:space="preserve">Tokens</text>
+<text x="18" y="128" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="start" xml:space="preserve">Composer</text>
+<text x="18" y="182" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="start" xml:space="preserve">One position</text>
+<text x="18" y="199" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="start" xml:space="preserve">per meaning</text>
+<text x="18" y="268" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="start" xml:space="preserve">Transformer</text>
+<text x="18" y="343" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="start" xml:space="preserve">States</text>
+<rect x="171.5" y="34" width="77.0" height="46" rx="10" fill="#f6f5f1"/>
+<rect x="179.5" y="40" width="61.0" height="34" rx="7" fill="#e9e7e1"/>
+<text x="210.0" y="62.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"The"</text>
+<path d="M210 82 L210 104" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="162" y="108" width="96" height="32" rx="8" fill="#ffffff" stroke="#b5b3ab" stroke-width="1"/>
+<text x="210" y="129" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#52514e" text-anchor="middle" xml:space="preserve">GRU</text>
+<path d="M210 142 L210 164" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="176" y="168" width="68" height="36" rx="9" fill="#2a78d6"/>
+<text x="210" y="192" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" xml:space="preserve">Q₁</text>
+<path d="M210 206 L210 234" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<path d="M210 298 L210 318" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="176" y="322" width="68" height="36" rx="9" fill="#ffffff" stroke="#b5b3ab" stroke-width="1"/>
+<text x="210" y="346" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">h₁</text>
+<rect x="322.3" y="34" width="135.39999999999998" height="46" rx="10" fill="#f6f5f1"/>
+<rect x="330.3" y="40" width="69.6" height="34" rx="7" fill="#e9e7e1"/>
+<text x="365.1" y="62.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">" cat"</text>
+<rect x="405.9" y="40" width="43.8" height="34" rx="7" fill="#e9e7e1"/>
+<text x="427.79999999999995" y="62.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"s"</text>
+<path d="M390 82 L390 104" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="342" y="108" width="96" height="32" rx="8" fill="#ffffff" stroke="#b5b3ab" stroke-width="1"/>
+<text x="390" y="129" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#52514e" text-anchor="middle" xml:space="preserve">GRU</text>
+<path d="M390 142 L390 164" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="356" y="168" width="68" height="36" rx="9" fill="#2a78d6"/>
+<text x="390" y="192" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" xml:space="preserve">Q₂</text>
+<path d="M390 206 L390 234" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<path d="M390 298 L390 318" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="356" y="322" width="68" height="36" rx="9" fill="#ffffff" stroke="#b5b3ab" stroke-width="1"/>
+<text x="390" y="346" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">h₂</text>
+<rect x="498.0" y="34" width="144.0" height="46" rx="10" fill="#f6f5f1"/>
+<rect x="506.0" y="40" width="69.6" height="34" rx="7" fill="#e9e7e1"/>
+<text x="540.8" y="62.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">" sle"</text>
+<rect x="581.6" y="40" width="52.4" height="34" rx="7" fill="#e9e7e1"/>
+<text x="607.8000000000001" y="62.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"ep"</text>
+<path d="M570 82 L570 104" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="522" y="108" width="96" height="32" rx="8" fill="#ffffff" stroke="#b5b3ab" stroke-width="1"/>
+<text x="570" y="129" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#52514e" text-anchor="middle" xml:space="preserve">GRU</text>
+<path d="M570 142 L570 164" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="536" y="168" width="68" height="36" rx="9" fill="#2a78d6"/>
+<text x="570" y="192" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" xml:space="preserve">Q₃</text>
+<path d="M570 206 L570 234" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<path d="M570 298 L570 318" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="536" y="322" width="68" height="36" rx="9" fill="#ffffff" stroke="#b5b3ab" stroke-width="1"/>
+<text x="570" y="346" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">h₃</text>
+<rect x="130" y="238" width="520" height="58" rx="12" fill="#e3edf9"/>
+<text x="390.0" y="264" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">Causal Transformer over meanings</text>
+<text x="390.0" y="283" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="middle" xml:space="preserve">3 positions instead of 5 tokens</text>
+<path d="M606 340 L684 340" stroke="#898781" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="690" y="322" width="196" height="36" rx="9" fill="#ffffff" stroke="#b5b3ab" stroke-width="1"/>
+<text x="788" y="345" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">Decoder</text>
+<path d="M788 360 L788 384" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="694.8" y="388" width="78.19999999999999" height="34" rx="7" fill="#e9e7e1"/>
+<text x="733.9" y="410.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">" deep"</text>
+<rect x="779.0" y="388" width="52.4" height="34" rx="7" fill="#e9e7e1"/>
+<text x="805.2" y="410.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"ly"</text>
+<rect x="837.4" y="388" width="43.8" height="34" rx="7" fill="#f6f5f1"/>
+<text x="859.3" y="410.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">end</text>
+<text x="788" y="446" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="middle" xml:space="preserve">next meaning, token by token</text>
+<path d="M606 186 L684 186" stroke="#898781" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="690" y="168" width="196" height="36" rx="9" fill="#ffffff" stroke="#b5b3ab" stroke-width="1"/>
+<text x="788" y="191" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">Reconstruction</text>
+<path d="M788 206 L788 224" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="724.0" y="228" width="69.6" height="34" rx="7" fill="#e9e7e1"/>
+<text x="758.8" y="250.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">" sle"</text>
+<rect x="799.6" y="228" width="52.4" height="34" rx="7" fill="#e9e7e1"/>
+<text x="825.8000000000001" y="250.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"ep"</text>
+<text x="788" y="284" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="middle" xml:space="preserve">same unit from Q alone</text>
+<text x="788" y="301" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">(training objective)</text>
+</svg>

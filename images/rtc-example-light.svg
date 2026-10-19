@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="990" height="170" viewBox="0 0 990 170" role="img" aria-label="RTC example: the token vectors v1, v2, v3 of one unit of meaning are composed into one meaning vector Q that takes one position and decodes back to the same tokens">
+<title>RTC example: the token vectors v1, v2, v3 of one unit of meaning are composed into one meaning vector Q that takes one position and decodes back to the same tokens</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#898781" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="990" height="170" fill="#ffffff"/>
+<rect x="16" y="55" width="150" height="40" rx="9" fill="#f6f5f1"/>
+<text x="91" y="80" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">" unbelievable"</text>
+<path d="M172 75 L198 75" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="204" y="58" width="61.0" height="34" rx="7" fill="#e9e7e1"/>
+<text x="234.5" y="80.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">" un"</text>
+<rect x="271.0" y="58" width="86.8" height="34" rx="7" fill="#e9e7e1"/>
+<text x="314.4" y="80.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"believ"</text>
+<rect x="363.8" y="58" width="69.6" height="34" rx="7" fill="#e9e7e1"/>
+<text x="398.6" y="80.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"able"</text>
+<text x="234.5" y="48" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">v₁</text>
+<text x="314.4" y="48" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">v₂</text>
+<text x="398.6" y="48" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">v₃</text>
+<text x="318.7" y="124" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#52514e" text-anchor="middle" xml:space="preserve">3 tokens = 3 positions</text>
+<text x="318.7" y="142" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">in a standard model</text>
+<text x="469.4" y="66" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">compose</text>
+<path d="M441.4 75 L497.4 75" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="505.4" y="52" width="150" height="46" rx="10" fill="#2a78d6"/>
+<text x="580.4" y="81" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle" xml:space="preserve">Q  (one vector)</text>
+<text x="580.4" y="124" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">1 meaning = 1 position</text>
+<text x="691.4" y="66" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">decode</text>
+<path d="M663.4 75 L719.4 75" stroke="#898781" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+<rect x="727.4" y="58" width="61.0" height="34" rx="7" fill="#e9e7e1"/>
+<text x="757.9" y="80.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">" un"</text>
+<rect x="794.4" y="58" width="86.8" height="34" rx="7" fill="#e9e7e1"/>
+<text x="837.8" y="80.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"believ"</text>
+<rect x="887.1999999999999" y="58" width="69.6" height="34" rx="7" fill="#e9e7e1"/>
+<text x="921.9999999999999" y="80.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="400" fill="#0b0b0b" text-anchor="middle" xml:space="preserve">"able"</text>
+<text x="842.0999999999999" y="124" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#52514e" text-anchor="middle" xml:space="preserve">the exact same tokens</text>
+<text x="842.0999999999999" y="142" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#898781" text-anchor="middle" xml:space="preserve">nothing is lost</text>
+</svg>

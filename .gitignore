@@ -1,0 +1,7 @@
+# Only README.md, LICENSE and images/ are published. Everything else stays local.
+*
+!README.md
+!LICENSE
+!.gitignore
+!images/
+!images/**
