@@ -96,7 +96,8 @@ Two models are compared throughout:
 | **Quality at saturation** | Equal (1.754 vs 1.743 bits per byte). |
 | **Training speed** | Each training step is 2–3× slower on short texts. With the same wall-clock budget there, the baseline wins. |
 | **Split server/device decoding** | Plain vectors fail: they collapse into an "average meaning". The **server must choose the next unit**. |
-| **Still unproven** | Quality at large scale, and exact recall of facts from long contexts. |
+| **Exact recall (needle in a haystack)** | RTC recovers a hidden 5-digit number **98.75%** of the time, against **46.6%** for the baseline, in haystacks of up to 256 words. |
+| **Still unproven** | Quality at large scale, and exact recall from much longer contexts. |
 
 ---
 
@@ -123,6 +124,27 @@ This is a projection, not a measurement. It applies the measured positions-per-w
 - **RTC does not shrink model weights.** 32B and 70B models still do not fit in 16 GB.
 - **These RTC models do not exist yet.** Existing models would first have to be adapted to RTC and retrained, and long-context quality is still untested.
 
+### Needle in a haystack
+
+Does composing a unit into one vector Q lose exact details? To find out, a random 5-digit number is hidden in ordinary text (a sentence like "Secret number: 58291.") at 10%, 50% or 90% of the way through. The text ends by asking for the number. Setup:
+- **Training:** both models were trained the same way, for the same number of steps, with haystacks growing from 8 to 256 words.
+- **Evaluation:** each cell is 100 test samples from text neither model saw.
+
+| Haystack | A: number correct | A: correct and stops | **B (RTC): number correct** |
+|---|---:|---:|---:|
+| 16 words | 71–84% | 9–21% | **100%** |
+| 64 words | 53–56% | 4–6% | **100%** |
+| 128 words | 27–48% | 2–4% | **97–100%** |
+| 256 words | 9–34% | 0–2% | **93–100%** |
+| **Mean (12 conditions)** | **46.6%** | **5.5%** | **98.75%** |
+
+- **RTC keeps exact details.** A random number composed into one Q is decoded back exactly 98.6% of the time, and attention finds that one position reliably.
+- **The baseline copies the number piece by piece,** over 3–4 sub-word tokens. It degrades with distance and often fails to stop: `74161` becomes `74161161161`. RTC's unit ends with its own end-of-unit token, so for RTC "correct" and "correct and stops" are the same.
+- **Scope:**
+  - one seed, ~1M-parameter models;
+  - the longest haystack is 256 words, about 500 positions for the baseline and 270 for RTC;
+  - large models copy tokens much better, so the gap may shrink at scale.
+
 ---
 
 <a id="limitations"></a>
@@ -131,7 +153,7 @@ This is a projection, not a measurement. It applies the measured positions-per-w
 - **Small scale.** All quality results come from ~1M-parameter models trained on 1–2 MB corpora.
 - **Single-word units so far.** Every result uses one word as the unit of meaning. Multi-word meaning units have not been tested yet.
 - **Long-range context.** The small models made little use of distant context.
-- **Exact recall.** The needle-in-a-haystack test, which asks the model to recover a hidden number from a long text, has not produced a conclusive result yet.
+- **Exact recall at length.** The needle-in-a-haystack test has only been run up to 256 words, and with one seed.
 - **More parameters.** The RTC model has ~50% more parameters than the baseline because of its decoders.
 - **Reconstruction is learned, not guaranteed.** About 2% of units are not rebuilt exactly. This matters most for names and numbers.
 
@@ -139,7 +161,7 @@ This is a projection, not a measurement. It applies the measured positions-per-w
 ## Roadmap
 
 1. **Multi-word meaning units:** compose several words that carry one meaning into a single Q, and measure the extra compression and its cost in quality.
-2. **Needle in a haystack:** can exact facts be recovered from compressed long contexts?
+2. **Longer needles:** repeat the needle-in-a-haystack test at 1,000–10,000 words, with several seeds.
 3. **Retrofit a pretrained model:** add RTC to a small open model (0.6B–1.7B) and continue training it.
 4. **Stronger baselines:** compare against a corpus-specific tokenizer with grouped-query attention, and against a parameter-matched baseline.
 
