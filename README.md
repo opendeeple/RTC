@@ -97,7 +97,8 @@ Two models are compared throughout:
 | **Training speed** | Each training step is 2–3× slower on short texts. With the same wall-clock budget there, the baseline wins. |
 | **Split server/device decoding** | Plain vectors fail: they collapse into an "average meaning". The **server must choose the next unit**. |
 | **Exact recall (needle in a haystack)** | RTC recovers a hidden 5-digit number **98.75%** of the time, against **46.6%** for the baseline, in haystacks of up to 256 words. |
-| **Still unproven** | Quality at large scale, and exact recall from much longer contexts. |
+| **Retrofitting a pretrained model** | First attempt failed. Added to Qwen3-0.6B with one epoch of continued training, RTC cut the KV cache **3.3–3.7×**, but text prediction got **much worse**: 3.12 vs 1.23 bits per byte on Uzbek. |
+| **Still unproven** | Quality at large scale, a working retrofit, and exact recall from much longer contexts. |
 
 ---
 
@@ -145,12 +146,40 @@ Does composing a unit into one vector Q lose exact details? To find out, a rando
   - the longest haystack is 256 words, about 500 positions for the baseline and 270 for RTC;
   - large models copy tokens much better, so the gap may shrink at scale.
 
+### Retrofitting a pretrained model (first attempt)
+
+Can an existing model learn to read meaning vectors instead of tokens? RTC was added to **Qwen3-0.6B-Base**, and the model was trained further on the same text in both of its forms. How it was attached:
+- **Input:** a GRU composes each unit's tokens, using Qwen's own token embeddings, into one vector Q. It starts as the embedding of the unit's last token.
+- **Backbone:** all 28 pretrained layers run over the Q's, one position per unit.
+- **Output:** a small decoder emits the next unit's tokens through Qwen's own output head. It is 2 layers copied from the backbone and starts as an identity, so at step 0 it predicts like the pretrained head.
+
+Setup:
+- **Training:** every model was fully fine-tuned for one epoch on ~11 MB of text per language (~750 steps, 256-word windows, one RTX A6000).
+- **Data:** the 80% train part of the earlier corpora, plus more text from the same sources. The earlier validation and test parts are held out.
+- **Units:** "punct" makes each word one unit; "words2" joins every two words into one unit.
+
+| Model | Positions per word (uz / kaa) | KV cache per 1,000 words | Uzbek BPB | Karakalpak BPB | Units rebuilt exactly |
+|---|---:|---:|---:|---:|---:|
+| Qwen3-0.6B, no training | 3.33 / 3.66 | 364–401 MB | 2.222 | 2.638 | — |
+| Qwen3-0.6B, fine-tuned (tokens) | 3.33 / 3.66 | 364–401 MB | **1.229** | **0.776** | — |
+| + RTC, one word per Q | 1.00 | 109 MB | 3.116 | 2.575 | 96% |
+| + RTC, two words per Q | 0.52 | 56 MB | 3.808 | 3.379 | 80–83% |
+
+- **The Q's work; prediction from them does not yet.** Each unit is rebuilt from its own Q 96% of the time (0.3% from another unit's Q). Yet next-text prediction is 2.5–3.3× worse than the fine-tuned baseline, and on Uzbek even worse than the untrained model.
+- **The retrofit had not converged.** RTC's training loss was still falling when the epoch ended. The pretrained layers have to relearn their input and output, which one epoch does not cover.
+- **Why the stop:** with a gap this large, more seeds would not change the conclusion, so the run was stopped after the first seed.
+- **Next to try:**
+  - distill from the fine-tuned token model;
+  - train longer, with a curriculum from tokens to units;
+  - use a deeper output decoder.
+- **Scope:** one seed. The Karakalpak news corpus likely holds near-duplicate passages (only exact duplicates were removed), which may explain its very low baseline number. Both models saw the same data, so the comparison stays fair.
+
 ---
 
 <a id="limitations"></a>
 ## Limitations
 
-- **Small scale.** All quality results come from ~1M-parameter models trained on 1–2 MB corpora.
+- **Small scale.** The main quality results come from ~1M-parameter models trained on 1–2 MB corpora. The one test on a pretrained 0.6B model did not yet reach the quality of the token model.
 - **Single-word units so far.** Every result uses one word as the unit of meaning. Multi-word meaning units have not been tested yet.
 - **Long-range context.** The small models made little use of distant context.
 - **Exact recall at length.** The needle-in-a-haystack test has only been run up to 256 words, and with one seed.
@@ -162,8 +191,13 @@ Does composing a unit into one vector Q lose exact details? To find out, a rando
 
 1. **Multi-word meaning units:** compose several words that carry one meaning into a single Q, and measure the extra compression and its cost in quality.
 2. **Longer needles:** repeat the needle-in-a-haystack test at 1,000–10,000 words, with several seeds.
-3. **Retrofit a pretrained model:** add RTC to a small open model (0.6B–1.7B) and continue training it.
-4. **Stronger baselines:** compare against a corpus-specific tokenizer with grouped-query attention, and against a parameter-matched baseline.
+3. **Retrofit a pretrained model:** add RTC to a small open model (0.6B–1.7B) and continue training it. *First attempt done (Qwen3-0.6B, one epoch): it lost much quality, see [above](#retrofitting-a-pretrained-model-first-attempt). Next: distillation from the token model and longer training.*
+4. **Two ready-to-use Qwen models, side by side:** release a pair of fully trained Qwen3 models built on the same data and budget:
+   - the standard model, fine-tuned on tokens;
+   - the same model with RTC.
+
+   Each comes with its weights, a script that runs it, and a script that compares the two on text quality, memory and speed. Developers can then try both on their own text and see the difference themselves.
+5. **Stronger baselines:** compare against a corpus-specific tokenizer with grouped-query attention, and against a parameter-matched baseline.
 
 ## Experimental setup
 
